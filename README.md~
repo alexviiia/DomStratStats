@@ -1,0 +1,1018 @@
+--- 
+body:
+  - p:
+      en-us: Here you can download our code, and learn how to use it.  This page is the software's manual.
+      es-mx: Aquí puedes bajar nuestro código, y aprender como usarlo.  Esta página es el manual del programa.
+  - h2:
+      en-us: About DomStratStats
+      es-mx: Acerca de DomStratStats
+  - p:
+      -
+        en-us: The goal of this software is to bring better statistics to protein sequence analysis.  The standard approaches are based on
+        es-mx: El propósito de este programa es traer mejores estadísticas al análisis de secuencias de proteina.  Las estrategias normales están basadas en
+      - a:
+          href:
+            en-us: https://en.wikipedia.org/wiki/P-value
+            es-mx: https://es.wikipedia.org/wiki/Valor_P
+          text:
+            en-us: \(p\)-values
+            es-mx: valores \(p\)
+      - dico: y
+      - a:
+          href:
+            en-us: https://en.wikipedia.org/wiki/BLAST
+            es-mx: https://es.wikipedia.org/wiki/BLAST
+          text:
+            en-us: \(E\)-values
+            es-mx: valores \(E\)
+      - ','
+      -
+        en-us: but here we introduce
+        es-mx: pero aquí introducimos los
+      - a:
+          href: https://en.wikipedia.org/wiki/False_discovery_rate
+          text:
+            en-us: \(q\)-values
+            es-mx: valores \(q\)
+      - dico: y
+      -
+        en-us: lFDRs (local False Discovery Rates) for protein domains.  They key to make \(q\)-values and lFDRs work better is by stratifying, in this case analyzing each domain family separately, which best balances noise across domain families.
+        es-mx: el lFDR (siglas en inglés de la Tasa de Falso Descubrimiento local) para los dominios de proteinas.  La clave para que los valores \(q\) y el lFDR trabajen mejor es estratificando, en este caso cada familia de dominio por separado, lo cual balancea los errores a través de las familias de dominio.
+  - p:
+      -
+        en-us: Practically, the "domain \(q\)-value" approach will be the most useful.  Theoretically, we proved in our work that lFDRs are optimal; however, we found in benchmarks that lFDR estimates do not perform as well as \(q\)-values because some HMMER3 \(p\)-values are bad (for certain repetitive domain families, in particular).  We found that \(q\)-values are much more robust than lFDRs given the \(p\)-values that HMMER3 gives.  Our code provides lFDRs anyway for research purposes, and with the hope that they can be better used in the future, when domain \(p\)-values improve.
+        es-mx: Prácticamente, la estrategia del "valor \(q\) de dominios" va a ser la más útil.  Teóricamente, hemos probado en nuestro trabajo que el lFDR es óptimo; sin embargo, descubrimos en nuestras pruebas que las estimaciones de los lFDRs no funcionan también como los valores \(q\) porque algunos valores \(p\) de HMMER3 son malos (para ciertas familias de dominio repititivas, en particular).  Encontramos que los valores \(q\) son mucho más robustos que los lFDRs dados los valores \(p\) que HMMER3 nos da.  Nuestro código provée los lFDRs de todos modos para propósitos de investigación, y con la esperanza de que se puedan usar mejor en el futuro, cuando los valores \(p\) de dominio mejoren.
+  - p:
+      -
+        en-us: Lastly, we included an even more experimental mode, "tiered \(q\)-values".  Our tiered analysis combines the HMMER sequence and domain \(p\)-values into a joint assessment of significance based on the FDR.  On the plus side, it produces even more predictions at a fixed combined FDR than the previous approaches.  However, the theoretical FDR is too far off of the empirical FDR, which means that you should exercise caution choosing which threshold to use.
+        es-mx: Finalmente, incluímos un modo aún más experimental, los "valores \(q\) con gradas".  Este análisis con gradas combina los valores \(p\) de secuencia y de dominio de HMMER en una decisión de significancia combinada basada en el FDR.  Por el lado bueno, produce aún más predicciones por FDR combinado que las otras estrategias.  Sin embargo, el FDR teórico desvía demasiado del FDR empírico, lo cual significa que usted debería ejercitar precaución escogiendo el contraste de hipótesis.
+  - h2:
+      en-us: Source code
+      es-mx: Código fuente
+  - note:
+      - a:
+          href: DomStratStats-1.03.tgz
+          text:
+            img: /dl.png
+      - a: DomStratStats-1.03.tgz
+      - (47 KB)
+  - p:
+      -
+        en-us: Download our Perl source code, in a gzip-compressed
+        es-mx: Baje nuestro código fuente Perl, en un 
+      - a:
+          href: http://en.wikipedia.org/wiki/Tar_(file_format)
+          text:
+            en-us: tar archive file
+            es-mx: archivo tar
+      -
+        en-us: .  It has 8 packages and 5 scripts totalling 1342 lines of code (according to
+        es-mx: comprimido con gzip.  Tiene 8 paquetes y 5 guiones para un total de 1342 lineas de código (de acuerdo a
+      - a:
+          href: http://cloc.sourceforge.net/
+          text: cloc
+      - ).
+  - p:
+      - 
+        en-us: All my code is released under the
+        es-mx: Todo mi código está publicado bajo la
+      - a:
+          href: http://www.gnu.org/licenses/
+          text: GNU GPLv3
+      - (
+      - 
+        en-us: GNU General Public License version 3
+        es-mx: Licencia Pública General de GNU, versión 3
+      - ).
+  - h3:
+      en-us: Previous versions
+      es-mx: Versiones previas
+  - p:
+      -
+        en-us: Code
+        es-mx: Código
+      - a: DomStratStats-1.02.tgz
+      - (46 KB)
+      - dico: y
+      - a:
+          text: manual 1.02
+          href: index-1.02.yml
+      - .
+  - p:
+      -
+        en-us: Code
+        es-mx: Código
+      - a: DomStratStats-1.01.tgz
+      - (46 KB)
+      - dico: y
+      - a:
+          text: manual 1.01
+          href: index-1.01.yml
+      - .
+  - p:
+      -
+        en-us: Code
+        es-mx: Código
+      - a: DomStratStats-1.00.tgz
+      - (35 KB)
+      - dico: y
+      - a:
+          text: manual 1.00
+          href: index-1.00.yml
+      - .
+  - h2:
+      en-us: Installation
+      es-mx: Instalación
+  - p:
+      -
+        en-us: Our perl code is self-contained, so only
+        es-mx: Nuestro código de perl es autosuficiente, así que sólo
+      - a:
+          href: http://www.perl.org/get.html
+          text: Perl 5
+      -
+        en-us: is required (no external perl packages are needed).  All you have to do is unpack the code and run the scripts from the directory that contains them.  In this mode, the scripts and all packages should stay together in the same directory.
+        es-mx: es requerido (no usa paquetes externos de perl).  Todo lo que necesita hacer es desempacar el código y correr los guiones del directorio que los contiene.  En este modo, todos los guiones y paquetes deberían quedarse juntos en el mismo directorio.
+      -
+        en-us: You can also 
+        es-mx: También puede
+      - a:
+          href: pLink:/pubcode
+          text:
+            en-us: run my scripts from arbitrary directories
+            es-mx: correr mis guiones desde directorios arbitrarios
+      - .
+  - p:
+      -
+        en-us: You will also need
+        es-mx: También necesitará
+      - a:
+          href: http://hmmer.janelia.org/
+          text: HMMER3
+      -
+        en-us: (only the
+        es-mx: (sólo los ejecutables
+      - code: hmmpress
+      - dico: y
+      - code: hmmscan
+      -
+        en-us: executables are needed).  Our code also assumes
+        es-mx: son necesarios).  Nuestro código también asume que
+      - code: gzip
+      -
+        en-us: is available in your system.
+        es-mx: está disponible en su sistema.
+  - h2:
+      en-us: Running the DomStratStats scripts
+      es-mx: Corriendo los guiones de DomStratStats
+  - h3:
+      en-us: Recommendations
+      es-mx: Recomendaciones
+  - p:
+      - 
+        en-us: The scripts do not come with default thresholds for \(q\)-values or lFDRs.  Different thresholds will allow for different balances of true and false positives.  If you want predictions that are comparable in quality to Pfam, our benchmarks suggest a \(q\)-value threshold of 4e-4 (most recommended), or an lFDR threshold of 2.5e-2 (lFDRs are less recommended in general), or a tiered \(q\)-value threshold of 1e-4 (for each tier, but FDRs are inaccurate in this mode).  But in some ways Pfam is too conservative, so if you prefer you can set more lenient thresholds.  For example, \(q \le \mbox{1e-3}\) should give one false positive for every 1000 domains (although the true FDR might be higher if your sequences contain
+        es-mx: Los guiones no tienen contrastes de hipótesis estándar para los valores \(q\) o lFDRs.  Valores de contraste differentes le permitirán balances diferentes de positivos verdaderos y falsos.  Si quiere predicciones comparables en calidad a las de Pfam, nuestras pruebas sugieren un contraste de valor \(q\) de 4e-4 (más recomendado), o un contraste de lFDR de 2.5e-4 (los lFDRs son menos recomendados en general), o un contraste para valores \(q\) con gradas de 1e-4 (para cada grada, pero el FDR será impreciso en este modo).  Pero en algunas maneras Pfam es demasiado conservador, así que si prefiere podrá usar contrastes menos severos.  Por ejemplo, \(q \le \mbox{1e-3}\) debería dar un falso positivo por cada 1000 dominios (aunque el FDR verdadero será más alto si sus secuencias contienen
+      - a:
+          href:
+            en-us: https://en.wikipedia.org/wiki/Coiled_coil
+            es-mx: https://es.wikipedia.org/wiki/H%C3%A9lice_superenrollada
+          text: 
+            en-us: coiled coils
+            es-mx: hélices superenrolladas
+      - ','
+      - a:
+          href:
+            en-us: https://en.wikipedia.org/wiki/Transmembrane_domain
+            es-mx: https://es.wikipedia.org/wiki/Prote%C3%ADna_transmembranal
+          text: 
+            en-us: transmembrane domains
+            es-mx: dominios transmembranales
+      - ','
+      - 
+        en-us: or other
+        es-mx: u otras
+      - a:
+          href: https://en.wikipedia.org/wiki/BLAST
+          text: 
+            en-us: low-complexity regions
+            es-mx: secuencias de baja complejidad
+      - ','
+      - 
+        en-us: so watch out!).
+        es-mx: ¡así que tengan cuidado!).
+  - p:
+      - 
+        en-us: The FDRs and lFDRs we compute become more accurate when datasets are larger.  In practice, we found that the proteins from a single organism are not enough to give optimal results, but grouping many related organisms performs very well (for example, I usually work with 15 organisms of the phylum
+        es-mx: Los FDRs y lFDRs que calculamos se vuelven más precisos cuando las bases de datos son más grandes.  En práctica, encontramos que las proteínas de un sólo organismo no son sufucientes para dar resultados óptimos, pero agrupara a varios organismos relacionados funciona mejor (por ejemplo, usualmente trabajo con 15 organismos del filo
+      - a:
+          href:
+            en-us: https://en.wikipedia.org/wiki/Apicomplexa
+            es-mx: https://es.wikipedia.org/wiki/Apicomplexa
+          text: Apicomplexa
+      - ).
+      - 
+        en-us: The examples below break this rule, they only use
+        es-mx: Los ejemplos de abajo rompen esta regla, sólo usan a 
+      - a:
+          href:
+            en-us: https://en.wikipedia.org/wiki/Plasmodium_falciparum
+            es-mx: https://es.wikipedia.org/wiki/Plasmodium_falciparum
+          text:
+            i: Plasmodium falciparum
+      - 
+        en-us: for the sake of having small inputs and outputs.  In general, it is better to start from a larger collection of proteins that represent the diversity of the domains contained in the organism you're studying (such as the Apicomplexa, in the case of <i>P. falciparum</i>, as I did for
+        es-mx: para sólo lidiar con archivos pequeños.  En general, es mejor empezar con una colección más grande de proteinas que representen la diversidad de los dominios contenidos en el organismo que usted estudie (como los Apicomplexa en el caso de <i>P. falciparum</i>, como lo hice en 
+      - a:
+          href: pLink:/dssApi
+          text:
+            en-us: this other project
+            es-mx: este otro proyecto
+      - ).
+      - 
+        en-us: The lFDRs are much more sensitive than \(q\)-values to the size of the input data.
+        es-mx: Los lFDRs son mucho más sensibles que los valores \(q\) al tamaño de los datos de entrada.
+  - h3:
+      en-us: HMM databases
+      es-mx: Bases de datos de HMM
+  - p:
+      -
+        en-us: If you choose Pfam, which is what we use in our examples, you should download
+        es-mx: Si escoge a Pfam, que es lo que usamos en los ejemplos, debería bajar
+      - b: Pfam-A.hmm.gz
+      -
+        en-us: from the
+        es-mx: del
+      - a:
+          href: ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/
+          text:
+            en-us: Pfam FTP site
+            es-mx: sitio FTP de Pfam
+      - .
+      -
+        en-us: It will be necessary to use HMMER3's hmmpress on this HMM database before hmmscan can use it.  The following commands achieve that.
+        es-mx: Será necesario usar hmmpress de HMMER3 en esta base de datos de HMM antes de que hmmscan la pueda usar.  Los siguientes comandos logran eso.
+  - entry:
+      code: 
+        pre:
+          - '#'
+          - 
+            en-us: uncompress HMM database first
+            es-mx: descomprima la base de datos HMM primero
+          - "\n"
+          - b: gunzip Pfam-A.hmm.gz
+          - "\n\n#"
+          - 
+            en-us: prepare HMM database for searching with HMMER3 (which provides hmmpress)
+            es-mx: prepare la base de datos HMM para búsquedas con HMMER3 (la cual provée hmmpress)
+          - "\n#"
+          - 
+            en-us: four files will be generated, with names
+            es-mx: cuatro archivos diferentes se generarán, con nombres
+          - Pfam-A.hmm.h3{f,i,m,p}
+          - "\n"
+          - b: hmmpress Pfam-A.hmm
+          - "\n\n#"
+          - 
+            en-us: (optional) recompress the original HMM file (HMMER3 doesn't use it)
+            es-mx: (opcional) recomprima el archivo HMM original (HMMER3 no lo usa)
+          - "\n"
+          - b: gzip Pfam-A.hmm
+  - p:
+      -
+        en-us: For Pfam, it is optional but recommended to download
+        es-mx: Para Pfam, es opcional pero altamente recomendado bajar
+      - b: Pfam-A.hmm.dat.gz
+      -
+        en-us: as well, it helps our code recognize nested domains.  You may keep this file compressed, DomStratStats will read it correctly!
+        es-mx: también, ayuda a nuestro código reconocer dominios anidados.  Este archivo puede permanecer comprimido, ¡DomStratStats lo leera correctamente!
+  - p:
+      -
+        en-us: Another popular HMM database is 
+        es-mx: Otra base de datos popular es
+      - a:
+          text: Superfamily
+          href: http://supfam.org/SUPERFAMILY/downloads.html
+      - .
+      - 
+        en-us: You will need to register to obtain the file
+        es-mx: Tendrá que registrarse para obtener el archivo
+      - b: hmmlib_1.75.gz
+      - .
+      - 
+        en-us: You can use it exactly the same way as Pfam-A.hmm.gz, but you will also need to run
+        es-mx: Se usa de la misma manera exactamente que Pfam-A.hmm.gz, pero también tendrá que correr
+      - code: hmmpress
+      - 
+        en-us: on it.  There is no Superfamily equivalent to
+        es-mx: con él.  No hay un equivalente en Superfamily de
+      - b: Pfam-A.hmm.dat.gz
+      - ','
+      - 
+        en-us: so unfortunately nested domains will not be handled correctly.  There are some important ways in which Superfamily HMMs differ from Pfam; however, our code does not treat Superfamily specially.  In all cases, we stratify the \(q\)-value and lFDR analysis by HMM.
+        es-mx: así que desafortunadamente los dominios anidados no se les tratará correctamente.  Hay algunas maneras importantes en que los HMMs de Superfamily difieren de Pfam; sin embargo, nuestro código no trata a Superfamily de manera especial.  En todos casos, estratificamos el análisis de valores \(q\) y lFDRs por HMM.
+  - h3:
+      en-us: Sample sequence file
+      es-mx: Archivo de secuencia de muestra
+  - p:
+      - 
+        en-us: To run through these examples, any
+        es-mx: Para tratar estos ejemplos, cualquier archivo de sequencias de proteina formato
+      - a:
+          href:
+            en-us: https://en.wikipedia.org/wiki/FASTA_format
+            es-mx: https://es.wikipedia.org/wiki/Formato_FASTA
+          text: FASTA
+      - 
+        en-us: format protein sequence file can be used.  If you want, you can try this file,
+        es-mx: se puede usar.  Si gusta, puede usar este archivo,
+      - a:
+          text: PLAF7.fa.gz
+          href: sample/PLAF7.fa.gz
+      - ','
+      - 
+        en-us: which is the
+        es-mx: que es el proteoma de
+      - a:
+          href:
+            en-us: https://en.wikipedia.org/wiki/Plasmodium_falciparum
+            es-mx: https://es.wikipedia.org/wiki/Plasmodium_falciparum
+          text:
+            i: Plasmodium falciparum
+      - 
+        en-us: proteome from
+        es-mx: de
+      - a:
+          text: PlasmoDB
+          href: http://plasmodb.org/plasmo/
+      - 
+        en-us: version 11.0, with pseudogenes removed, it contains 5441 proteins and is 2.3MB in size (compressed).
+        es-mx: versión 11.0, con pseudogenes removidos, contiene 5441 proteínas y un tamaño de 2.3MB (comprimido).
+  - p:
+      - 
+        en-us: All outputs for these proteins are listed below using Pfam 27 and Superfamily 1.75, and the 64-bit version of HMMER 3.1b1.  No sample files are included with our source code.  Small differences in output arise even from using a 32-bit architecture, be aware of that.  Additionally, HMMER 3.1b1 timestamps the output, so every run will appear to generate a different file if compared with hash functions such as SHA or MD5, so don't use them.  It is better to compare each line with a tool such as
+        es-mx: Todos los archivos de salida para estas proteinas están listados abajo usando Pfam 27 y Superfamily 1.75, y la version de 64 bits de HMMER 3.1b1.  Ningún archivo de muestra está incluído con nuestro código fuente.  Podrán haber pequeñas diferencias en archivos de salida tan sólo usando una arquitectura de 32 bits, para su información.  Adicionalmente, HMMER 3.1b1 fechea al archivo de salida, así que cada corrida parecera generar archivos diferentes si se comparan con funciones de resumen criprográfico como SHA o MD5, así que no las use.  Es mejor comparar cada linea con una herramienta como
+      - code: zdiff
+      - ','
+      - 
+        en-us: which is like
+        es-mx: que es como
+      - code: diff
+      - 
+        en-us: but for compressed files.
+        es-mx: pero para archivos comprimidos.
+  - entry:
+    - table:
+        -
+          -
+            en-us: Description
+            es-mx: Descripción
+          - Pfam 27
+          - Superfamily 1.75
+        -
+          -
+            en-us: Raw HMMER3 output
+            es-mx: Salida de HMMER3 sin procesar
+          - a:
+              href: sample/PLAF7.p.txt.gz
+              text: PLAF7.p.txt.gz
+          - a:
+              href: sample/PLAF7.s.txt.gz
+              text: PLAF7.s.txt.gz
+        -
+          -
+            en-us: HMMER3 output without overlaps
+            es-mx: Salida de HMMER3 sin superposiciones
+          - a:
+              href: sample/PLAF7.po.txt.gz
+              text: PLAF7.po.txt.gz
+          - a:
+              href: sample/PLAF7.so.txt.gz
+              text: PLAF7.so.txt.gz
+        -
+          -
+            en-us: domStratStats output without thresholds
+            es-mx: Salida de domStratStats sin contrastes
+          - a:
+              href: sample/PLAF7.pod.txt.gz
+              text: PLAF7.pod.txt.gz
+          - a:
+              href: sample/PLAF7.sod.txt.gz
+              text: PLAF7.sod.txt.gz
+        -
+          -
+            - 
+              en-us: domStratStats output, 
+              es-mx: Salida de domStratStats,
+            - \(q \le \mbox{4e-4}\)
+          - a:
+              href: sample/PLAF7.pod.q4e-4.txt.gz
+              text: PLAF7.pod.q4e-4.txt.gz
+          - a:
+              href: sample/PLAF7.sod.q4e-4.txt.gz
+              text: PLAF7.sod.q4e-4.txt.gz
+        -
+          -
+            - 
+              en-us: domStratStats output, 
+              es-mx: Salida de domStratStats,
+            - \(\mbox{lFDR} \le \mbox{2.5e-2}\)
+          - a:
+              href: sample/PLAF7.pod.l2.5e-2.txt.gz
+              text: PLAF7.pod.l2.5e-2.txt.gz
+          - a:
+              href: sample/PLAF7.sod.l2.5e-2.txt.gz
+              text: PLAF7.sod.l2.5e-2.txt.gz
+        -
+          -
+            - 
+              en-us: domStratStats output, 
+              es-mx: Salida de domStratStats,
+            - \(\mbox{FDR|lFDR} \le \mbox{4e-4}\)
+          - a:
+              href: sample/PLAF7.pod.fl4e-4.txt.gz
+              text: PLAF7.pod.fl4e-4.txt.gz
+          - a:
+              href: sample/PLAF7.sod.fl4e-4.txt.gz
+              text: PLAF7.sod.fl4e-4.txt.gz
+        -
+          -
+            - 
+              en-us: tieredStratQ output,
+              es-mx: Salida de tieredStratQ,
+            - \(q_{seq},q_{dom|seq} \le \mbox{1e-4}\)
+          - a:
+              href: sample/PLAF7.pot.1e-4.txt.gz
+              text: PLAF7.pot.1e-4.txt.gz
+          - a:
+              href: sample/PLAF7.sot.1e-4.txt.gz
+              text: PLAF7.sot.1e-4.txt.gz
+        -
+          -
+            - 
+              en-us: tieredStratQ output,
+              es-mx: Salida de tieredStratQ,
+            - \(q_{seq} \le \mbox{1e-4}\) (
+            - 
+              en-us: no
+              es-mx: sin contraste de
+            - \(q_{dom|seq}\)
+            - 
+              en-us: threshold
+              es-mx:
+            - )
+          - a:
+              href: sample/PLAF7.pot.1e-4,1.txt.gz
+              text: PLAF7.pot.1e-4,1.txt.gz
+          - a:
+              href: sample/PLAF7.sot.1e-4,1.txt.gz
+              text: PLAF7.sot.1e-4,1.txt.gz
+  - p:
+      - 
+        en-us: The only exception is the sample data for script 
+        es-mx: La única excepción son los datos de muestra para el guión
+      - code: 4allManyOrgs.pl
+      - ','
+      - 
+        en-us: which is a much larger dataset from
+        es-mx: el cual son datos mucho más grandes para
+      - a:
+          href: pLink:/dssApi
+          text:
+            en-us: a different project
+            es-mx: otro proyecto
+      - ','
+      - 
+        en-us: which was only run on Pfam 27.
+        es-mx: el cual sólo corrí con Pfam 27.
+  - h3:
+      en-us: Synopsis of scripts
+      es-mx: Sinopsis de guiones
+  - p:
+      - 
+        en-us: The following commands can be run on the sample file provided above, plus two Pfam files, all placed in the same directory as the code and called from that location.  All input files may be compressed with
+        es-mx: Los siguientes comandos pueden correrse en los archivos de ejemplo provistos arriba, mas los dos archivos de Pfam, todos colocados en el mismo directorio que el código y llamados de ese mismo lugar.  Todos los archivos de entrada pueden estar comprimidos con
+      - code: gzip
+      - 
+        en-us: and they may be specified with or without the GZ extension.  Output files are compressed with
+        es-mx: y también pueden ser especificados con o sin la extensión GZ.  Los archivos de salida serán comprimidos con
+      - code: gzip
+      - ','
+      - 
+        en-us: whether the outputs indicate a GZ extension or not.  So the commands as they are below produce and will work entirely with compressed files, without a single GZ extension indicated.
+        es-mx: ya sea si la ruta de salida indique la extensión GZ o no.  Así que los comandos así como se muestran abajo producirán y funcionarán completamente con archivos comprimidos, sin una sola extension GZ indicada.
+  - entry:
+      code: 
+        pre:
+          - '#'
+          - 
+            en-us: produce domain predictions with HMMER3 (provides hmmscan) with weak filters.
+            es-mx: produzca predicciones de dominios con HMMER3 (provée hmmscan) con filtros débiles.
+          - "\n"
+          - '#'
+          - 
+            en-us: this is the slowest step
+            es-mx: este es el paso más lento
+          - "\n"
+          - b: perl -w 0runHmmscan.pl hmmscan Pfam-A.hmm PLAF7.fa PLAF7.p.txt
+          - "\n"
+          - '#'
+          - 
+            en-us: (optional) compress output, our scripts will read it either way
+            es-mx: (opcional) comprima el archivo de salida, nuestros guiones lo leerán de todos modos
+          - "\n"
+          - b: gzip PLAF7.p.txt
+          - "\n\n#"
+          - 
+            en-us: remove overlaps, ranking by p-value, creating an intermediate output file
+            es-mx: remueva las superposiciones, ordenando por valor p, creando un archivo intermedio
+          - "\n"
+          - b: perl -w 1noOvs.pl PLAF7.p.txt PLAF7.po.txt Pfam-A.hmm.dat
+          - "\n\n#"
+          - 
+            en-us: add domain q-value, local FDR, and FDR|lFDR columns (no thresholds set)
+            es-mx: añada columnas de valores q de dominio, FDR locales, y FDR|lFDR (sin filtrar)
+          - "\n"
+          - b: perl -w 2domStratStats.pl PLAF7.fa PLAF7.po.txt PLAF7.pod.txt
+          - "\n#"
+          - 
+            en-us: ... and set a q-value threshold
+            es-mx: ... y filtre con un contraste de valor q
+          - "\n"
+          - b: perl -w 2domStratStats.pl PLAF7.fa PLAF7.po.txt PLAF7.pod.q4e-4.txt 4e-4
+          - "\n#"
+          - 
+            en-us: ... or set a local FDR threshold
+            es-mx: ... o filtre con un contraste de FDR local
+          - "\n"
+          - b: perl -w 2domStratStats.pl PLAF7.fa PLAF7.po.txt PLAF7.pod.l2.5e-2.txt 1 2.5e-2
+          - "\n#"
+          - 
+            en-us: ... or set an FDR threshold via equal local FDR thresholds
+            es-mx: ... or filtre con un contraste de FDR a través de FDR locales iguales
+          - "\n"
+          - b: perl -w 2domStratStats.pl PLAF7.fa PLAF7.po.txt PLAF7.pod.fl4e-4.txt 1 1 4e-4
+          - "\n\n#"
+          - 
+            en-us: tiered q-values (for sequence and domain p-values), with mandatory threshold set
+            es-mx: valores q con gradas (para valores p de secuencia y dominio), con contraste obligatorio
+          - "\n"
+          - b: perl -w 3tieredStratQ.pl PLAF7.fa PLAF7.po.txt PLAF7.pot.1e-4.txt 1e-4
+          - "\n#"
+          - 
+            en-us: ... or threshold set to sequence q-values only
+            es-mx: ... o filtro de contraste para los valores q de secuencia solamente
+          - "\n"
+          - b: perl -w 3tieredStratQ.pl PLAF7.fa PLAF7.po.txt PLAF7.pot.1e-4,1.txt 1e-4 1
+          - "\n\n#"
+          - 
+            en-us: run entire pipeline on multiple organisms, pooling their stats
+            es-mx: corre todo el proceso con varios organismos, combinando las estadísticas
+          - "\n"
+          - '#'
+          - 
+            en-us: pass prefixes ORG instead of ORG.fa or ORG.fa.gz
+            es-mx: pase los prefijos ORG en lugar de ORG.fa u ORG.fa.gz
+          - "\n"
+          - '#'
+          - 
+            en-us: outputs follow patterns (see below)
+            es-mx: las salidas siguen patrones (vease abajo)
+          - "\n"
+          - b: perl -w 4allManyOrgs.pl hmmscan Pfam-A.hmm Pfam-A.hmm.dat \
+          - "\n\t"
+          - b: Pf Pv Pk Py Pb Pc Bb Ta Tp Tg Nc Et Ch Cp Cm
+  - p:
+      - 
+        en-us: All examples were also run for Superfamily 1.75 (outputs are
+        es-mx: Todos los ejemplos también fueron corridos con Superfamily 1.75 (archivos salida son
+      - b: PLAF7.s*
+      - 
+        en-us: rather than
+        es-mx: en lugar de
+      - b: PLAF7.p*
+      - '),'
+      - 
+        en-us: and all output files are available above.  The only exception is the data for
+        es-mx: y todos los archivos de salida están disponibles arriba.  La única excepción son los datos para
+      - code: 4allManyOrgs.pl
+      - 
+        en-us: (see above).
+        es-mx: (vease arriba).
+  - h3:
+      - 0runHmmscan.pl 1.01 - 
+      - 
+        en-us: Get domain predictions from your protein sequences
+        es-mx: Adquiera predicciones de dominios para sus secuencias de proteína
+  - p:
+      - entry:
+          code: 
+            pre:
+              b: perl -w 0runHmmscan.pl &lt;hmmscan&gt; &lt;Pfam-A.hmm&gt; &lt;FASTA input&gt; &lt;output table&gt;
+      - 
+        en-us: The required inputs are
+        es-mx: Las entradas requeridas son
+  - ul:
+      -
+        - b: 'hmmscan:'
+        -
+          en-us: the path to the HMMER3 hmmscan executable.
+          es-mx: la ruta al ejecutable hmmscan de HMMER3.
+      -
+        - b: 'Pfam-A.hmm:'
+        -
+          en-us: the path to your HMM library of choice (in HMMER3 format).
+          es-mx: la ruta a su base de datos HMM preferida (en formato de HMMER3).
+      -
+        - b: 'FASTA input:'
+        -
+          en-us: the FASTA sequence file, may be compressed with gzip.
+          es-mx: el archivo de secuencias FASTA, puede estar comprimido con gzip.
+      -
+        - b: 'output table:'
+        -
+          en-us: the hmmscan output is plain text table delimited by whitespace (always uncompressed).
+          es-mx: el archivo de salida de hmmscan es una tabla de texto llano separada con espacios (siempre sin comprimir).
+  - p:
+      - 
+        en-us: This script doesn't simply run
+        es-mx: Este guión no corre simplemente a
+      - code: hmmscan
+      - 
+        en-us: with default parameters, in fact it changes a few options that are important for DomStratStats to work.  In particular, it makes sure outputs report \(p\)-values in place of \(E\)-values, and it relaxes the heuristic \(p\)-value filters to allow more predictions through.  If we desire predictions with \(q \le \mbox{4e-4}\) on UniRef50, we found that we must keep \(p\)-values as large as 1e-5 (however, for most families the effective \(p\)-value threshold is much smaller).  This script sets the most stringent \(p\)-value threshold at 1e-4 to ensure that nothing is missed by the domain stratified \(q\)-value analysis.
+        es-mx: con parámetros estándares, de hecho cambia varias opciones que son importantes para que DomStratStats funcione.  En partcular, se asegura que las salidas reporten valores \(p\) en lugar de valores \(E\), y relaja los filtros heurísticos de valores \(p\) para que pasen más predicciones.  Si se desean predicciones con \(q \le \mbox{4e-4}\) en UniRef50, encontramos que debemos conservar valores \(p\) tan grandes como 1e-5 (sin embargo, para la mayoría de las familias el contraste de valor \(p\) efectivo es mucho menor).  Este guión fija el contraste de valor \(p\) más estricto a 1e-4 para asegurar que nada falte para el análisis de valores \(q\) estratificados para dominios.
+  - p:
+      - 
+        en-us: Note that the HMMER3 heuristic filters were not optimized in the context of tiered \(q\)-values, it is possible that they can be modified for that use in particular (for example, by not setting a final domain \(p\)-value threshold in HMMER3, which currently equals the sequence \(p\)-value threshold of 1e-4).
+        es-mx: Nótese que los filtros heurísticos de HMMER3 no fueron optimizados en el contexto de valores \(q\) con gradas, es posible que se puedan modificar para ese uso en particular (por ejemplo, no fijar el contraste final de valores \(p\) para dominios en HMMER3, que actualmente es igual al contraste de valores \(p\) de secuencia de 1e-4).
+  - h3:
+      - 1noOvs.pl 1.02 - 
+      -
+        en-us: Removes overlapping domains ranking by \(p\)-value
+        es-mx: Remueve los dominios superimpuestos ordenando por valor \(p\)
+  - p:
+      - entry:
+          code: 
+            pre:
+              b: perl -w 1noOvs.pl &lt;input table&gt; &lt;output table&gt; [&lt;Pfam-A.hmm.dat&gt;]
+      - 
+        en-us: The required inputs are
+        es-mx: Las entradas requeridas son
+  - ul:
+      -
+        - b: 'input table:'
+        -
+          -
+            en-us: the output from
+            es-mx: el archivo de salida de
+          - code: hmmscan
+          -
+            en-us: (previous script).
+            es-mx: (guión anterior).
+      -
+        - b: 'output table:'
+        -
+          en-us: input with some domains removed. Format is identical to input.
+          es-mx: el archivo de entrada con algunos dominios removidos.  El formato es idéntico a la entrada.
+  - p:
+      - 
+        en-us: This is an additional optional input, which is specific to Pfam.
+        es-mx: Esta es una entrada opcional adicional, que es específica a Pfam.
+  - ul:
+      -
+        - b: 'Pfam-A.hmm.dat:'
+        -
+          en-us: only used to identify domains that may nest.
+          es-mx: sólo usada para identificar dominios que puedan anidarse.
+  - p:
+      - 
+        en-us: We found that the easiest way to compute correct FDRs and lFDRs is to first remove overlaps between domains, raking by \(p\)-value (in the absence of a better starting statistic, this performs very well). We assume that overlap removal will be performed ultimately between the best predictions, which is common practice between predictions of the same Pfam clan or superfamily.  This scripts removes overlaps between all families, not relying on curated relationships between HMMs.  It performs excellently if the ultimate threshold is reasonable (for example, \(q \le \mbox{4e-4}\)), but this step might lead to overly conservative statistics (particularly lFDRs appear much worse than they really are) for much weaker predictions.
+        es-mx: Encontramos que la mejor manera de calcular FDRs y lFDRs correctos es primero removiendo las superposiciones entre dominios, ordenando por valor \(p\) (en la ausencia de una estadística mejor de comienzo, esto funciona muy bien).  Asumimos que las superposiciones se removeran últimamente entre las mejores predicciones, como es práctica común entre los dominios del mismo clan de Pfam o superfamilia.  Este guión remueve todas las superposiciones entre todas las familias, sin contar con relaciones conocidas entre los HMMs.  Se desempeña excelentemente si el contraste final es razonable (por ejemplo, \(q \le \mbox{4e-4}\)), pero este paso llevará a estadísticas demasiado conservadoras (particularmente los lFDRs parecerán mucho peores de lo que son en realidad) para las predicciones más débiles.
+  - p:
+      - 
+        en-us: This script uses a permissive overlap definition, in which only overlaps that exceed 40 amino acids or 50% of the length of the smaller domain are removed.  These parameters are hardcoded in the script, modify them if you know what you're doing!
+        es-mx: Este guión usa una definición permisiva de superposición, en que sólo las superposiciones que excedan 40 aminoácidos o el 50% del largo del dominio más pequeño serán removidas.  Estos parámetros están fijos en el código fuente, ¡modifíquelos si sabe lo que hace!
+  - h3:
+      - 2domStratStats.pl 1.00 - 
+      -
+        en-us: Computes and adds domain \(q\)-values, lFDRs, and FDR|lFDR
+        es-mx: Calcule y añada los valores \(q\), lFDRs y FDR|lFDR para dominios
+  - p:
+      - entry:
+          code: 
+            pre:
+              b: |
+                perl -w 2domStratStats.pl &lt;FASTA input&gt; &lt;input table&gt; &lt;output table&gt; \
+                    [&lt;q-value&gt; &lt;local FDR&gt; &lt;FDR|lFDR&gt;]
+      - 
+        en-us: The required inputs are
+        es-mx: Las entradas requeridas son
+  - ul:
+      -
+        - b: 'FASTA input:'
+        -
+          en-us: the FASTA sequence file, used to count all proteins.
+          es-mx: el archivo de secuencia FASTA, usado para contar todas las proteínas.
+      -
+        - b: 'input table:'
+        -
+          en-us: the output from 1noOvs.pl (previous script).
+          es-mx: el archivo de salida de 1noOvs.pl (guión anterior).
+      -
+        - b: 'output table:'
+        -
+          en-us: every input line has three columns added (unless thresolds are set).
+          es-mx: cada linea de entrada tiene tres columnas añadidas (al menos que se hayan usado filtros).
+  - p:
+      - 
+        en-us: The following optional thresholds may be set.  Either or all can be set simultaneously, which is supported although it is unusual and hard to interpret, so avoid using this feature.  Use 1 for any threshold you don't wish to set but must list (for example, to only set an FDR|lFDR threshold, set both the \(q\)-value and lFDR thresholds to 1).
+        es-mx: Los siguientes filtros de contraste opcionales se pueden fijar.  Cada uno o todos se pueden usar simultaneamente, lo cual está permitido aunque sería raro y difícil de interpretar, así que evite usarlo así.  Use 1 para cada filtro de contraste que no se quiera usar pero deba listar (por ejemplo, para solo filtrar el contraste de FDR|lFDR, indique 1 para los contrastes de valor \(q\) y lFDR).
+  - ul:
+      -
+        - b: '\(q\)-value:'
+        -
+          en-us: stratified domain \(q\)-value threshold. Sets FDR per family.
+          es-mx: contraste de valor \(q\) estratificado para dominios.  Indica el FDR por familia.
+      -
+        - b: 'local FDR:'
+        -
+          en-us: stratified domain lFDR threshold. Sets minimum posterior error probability per family.
+          es-mx: contraste de lFDR estratificado para dominios.  Indica la probabilidad de error posterior mínima por familia.
+      -
+        - b: 'FDR|lFDR:'
+        -
+          en-us: threshold on combined FDR across domain families implied by a stratified domain lFDR threshold. Sets a stratified domain lFDR threshold indirectly, by specifying the resulting combined FDR instead.
+          es-mx: contraste que combina el FDR a través de todas las familias implícito por un contraste de lFDR estratificado para dominios.  Fija indirectamente un contraste para lFDRs estratificados de dominio, indicando en su lugar el FDR combinado que resulta.
+  - p:
+      - 
+        en-us: This is the most basic approach to FDR control.  If you're not researching domain predictions, and just want domain predictions at an FDR equal to what Pfam gives you, set a \(q\)-value threshold (\(q \le \mbox{4e-4}\) is best).  Regard lFDRs and FDR|lFDR as experimental features worthy of further research, at least for the moment.
+        es-mx: Esta es la estrategia más básica para controlar el FDR.  Si no está investigando la predicción de dominios, y sólo quiere predicciones con un FDR igual al de Pfam, fije un contraste de valor \(q\) (\(q \le \mbox{4e-4}\) será mejor).  Considere a los lFDRs y FDR|lFDR como funcionalidades experimentales que merecen mayor investigación, al menos por el momento.
+  - p:
+      - 
+        en-us: Note that the FDR|lFDR is monotonic with the stratified domain lFDR, but not with stratified domain \(q\)-values.  When lFDRs are accurate (this is a big if!), they provide the optimal way of controlling the combined FDR through FDR|lFDR.
+        es-mx: Nótese que el FDR|lFDR es monotónico con los lFDRs estratificados de dominio, pero no con los valores \(q\) estratificados para dominios.  Cuando los lFDRs son precisos (¡es una condición importante!), provéen la manera óptima de controlar el FDR combinado a través del FDR|lFDR.
+  - h3:
+      - 3tieredStratQ.pl 1.00 - 
+      -
+        en-us: Computes and adds \(q\)-values for sequences and domains
+        es-mx: Calcule y añada valores \(q\) para secuencias y dominios
+  - p:
+      - entry:
+          code: 
+            pre:
+              b: |
+                perl -w 3tieredStratQ.pl &lt;FASTA input&gt; &lt;input table&gt; &lt;output table&gt; \
+                    &lt;seq q-value&gt; [&lt;dom q-value&gt;]
+      - 
+        en-us: The required inputs are
+        es-mx: Las entradas requeridas son
+  - ul:
+      -
+        - b: 'FASTA input:'
+        -
+          en-us: the FASTA sequence file, used to count all proteins.
+          es-mx: el archivo de secuencia FASTA, usado para contar todas las proteínas.
+      -
+        - b: 'input table:'
+        -
+          en-us: the output from 1noOvs.pl (previous script).
+          es-mx: el archivo de salida de 1noOvs.pl (guión anterior).
+      -
+        - b: 'output table:'
+        -
+          en-us: every input line that passes thresholds has two columns added.
+          es-mx: cada linea de entrada que pase los contrastes tiene dos columnas añadidas.
+      -
+        - b: 'seq \(q\)-value:'
+        -
+          en-us: stratified sequence \(q\)-value threshold. Sets the desired FDR at the sequence level, which can be interpreted as the FDR of calling proteins as having at least one member of a given domain family. This threshold is mandatory because they define conditional domain \(q\)-values. If no domain \(q\)-value threshold is set, then this same value is applied to conditional domain \(q\)-values, in which case the domain FDR (unconditionally) is approximately twice the \(q\)-value threshold indicated.
+          es-mx: el contraste de valor \(q\) estratificado para secuencias.  Indica el FDR deseado al nivel de secuencia, lo cual se puede interpretar como el FDR de declarar a proteínas teniendo al menos un miembro de una familia de dominios dada.  Este contraste es obligatorio porque define los valores \(q\) de dominio condicionales.  Si no se indica un contraste para valores \(q\) de dominio, entonces este mismo valor se usa para filtrar los valores \(q\) de dominio condicionales, y en este caso el FDR de dominio (sin condiciones) es approximadamente el doble del contraste del valor \(q\) indicado.
+  - p:
+      - 
+        en-us: You can optionally specify a domain \(q\)-value threshold that differs from the sequence \(q\)-value threshold.
+        es-mx: Puede opcionalmente especificar el contraste para valores \(q\) de dominio que sea diferente del contraste para valores \(q\) de secuencia.
+  - ul:
+      -
+        - b: 'dom \(q\)-value:'
+        -
+          en-us: threshold on the stratified domain \(q\)-value computed conditionally on the sequence threshold. The expected domain FDR (unconditionally) is approximately the sum of the sequence and domain \(q\)-value thresholds.
+          es-mx: contraste para los valores \(q\) de dominio calculado condicionalmente con el contraste de secuencia.  El FDR de dominio esperado (sin condiciones) es aproximadamente la suma de los contrastes de valores \(q\) de secuencia y dominio.
+  - p:
+      - 
+        en-us: This "tiered" approach relies on setting a threshold on stratified sequence \(q\)-values, then computing \(q\)-values on the remaining domains (a \(q\)-value which gives an FDR conditional on the first sequence FDR filter) and setting a threshold too.  This way the information of repeating domains can be used, like Pfam does except here thresholds are picked automatically rather than through expert curation.  However, as I mentioned above, this approach does not control the FDR accurately, so \(q\)-value thresholds must be chosen using benchmarks.
+        es-mx: Esta estrategia "con gradas" consiste en usar un contraste para los valores \(q\) estratificados de secuencias, luego calculando valores \(q\) en el resto de los dominios (estos valores \(q\) estiman el FDR condicionalmente con el primer filtro de contraste de FDR de secuencias) y usando otro contraste.  De esta manera, la información de los dominios que se repiten se puede usar, como Pfam lo hace excepto que aquí los contrastes se escojen automáticamente en lugar de ser escogidos por expertos.  Sin embargo, como mencioné arriba, esta estrategia no controla el FDR con exactitud, así que los contrastes de valores \(q\) deberán ser escogidos usando evaluaciones de referencia.
+  - h3:
+      - 4allManyOrgs.pl 1.00 - 
+      -
+        en-us: Get final domain predictions from multiple sequence files
+        es-mx: Obtenga las predicciones finales de dominios a partir de varios archivos de secuencias
+  - p:
+      - entry:
+          code: 
+            pre:
+              b: perl -w 4allManyOrgs.pl &lt;hmmscan&gt; &lt;Pfam-A.hmm&gt; &lt;Pfam-A.hmm.dat&gt; &lt;orgs&gt;...
+      - 
+        en-us: The required inputs are
+        es-mx: Las entradas requeridas son
+  - ul:
+      -
+        - b: 'hmmscan:'
+        -
+          en-us: the path to the HMMER3 hmmscan executable.
+          es-mx: la ruta al ejecutable hmmscan de HMMER3.
+      -
+        - b: 'Pfam-A.hmm:'
+        -
+          en-us: the path to your HMM library of choice (in HMMER3 format).
+          es-mx: la ruta a su base de datos HMM preferida (en formato de HMMER3).
+      -
+        - b: 'Pfam-A.hmm.dat:'
+        -
+          en-us: Pfam-specific annotations (GA thresholds, clans, nesting).
+          es-mx: Anotaciones específicas de Pfam (contrastes GA, clanes, y dominios anidados).
+      -
+        - b: 'orgs...:'
+        -
+          en-us: list of prefixes to identify inputs and outputs (see below).
+          es-mx: lista de prefijos para identificar entradas y salidas (ver abajo).
+  - p:
+      en-us: This complex script runs the entire pipeline on several organisms, producing three kinds of outputs that one may wish to compare, namely the Standard Pfam (which use the GA thresholds and other processing), the Domain Stratified Statistics (without thresholds), and the Tiered Stratified \(q\)-values (with a hardcoded threshold of 1e-4 per tier).
+      es-mx: Este guión complejo corre todo el proceso con varios organismos, produciendo tres tipos de salidas que uno podría querer comparar, específicamente el Pfam Normal (que usa los contrastes GA y otros pasos), las Estadisticas Estratificadas de Dominio (sin contrastes), y los Valores \(q\) Estratificados con Gradas (con un contraste fijo de 1e-4 por grada).
+  - p:
+      en-us: For each prefix ORG provided, the input is assumed to be ORG.fa or ORG.fa.gz (either will be read correctly), and the outputs will be (all compressed with gzip by default, GZ extension ommited below)
+      es-mx: Para cada prefijo ORG indicado, el archivo de entrada se asume ser ORG.fa o ORG.fa.gz (ambos se leeran correctamente), y los archivos de salida serán (todos comprimidos con gzip automáticamente, la extensión GZ omitida abajo)
+  - ul:
+      -
+        - b: 'ORG.txt:'
+        -
+          en-us: Raw HMMER3 output with p-values and using permissive thresholds
+          es-mx: Salida de HMMER3 con valores p y usando contrastes permisivos
+      -
+        - b: 'ORG.noOvs.txt:'
+        -
+          en-us: HMMER3 output with overlaps removed (in the permissive sense)
+          es-mx: Salida de HMMER3 con superposiciones removidas (en el sentido permisivo)
+      -
+        - b: 'ORG.dss.txt:'
+        -
+          en-us: Domain Stratified Statistics output, adds 3 columns
+          es-mx: Salida de Estadisticas Estratificadas de Dominio, aumenta 3 columnas
+      -
+        - b: 'ORG.tsq.txt:'
+        -
+          en-us: Tiered Stratified \(q\)-values output, filtered and adds 2 columns
+          es-mx: Salida de Valores \(q\) Estratificados con Gradas, filtrado y aumenta 2 columnas
+      -
+        - b: 'ORG.ga.txt:'
+        -
+          en-us: Standard Pfam output, with 'GA' thresholds and intra-clan overlaps removed
+          es-mx: Salida del Pfam Normal, con contrastes 'GA' y superposiciones intra-clan removidas
+  - p:
+      en-us: Note that, while most steps are run independently per organism, all stratified statistics are estimated by pooling the \(p\)-value distributions across organisms (always stratified by domain family), which are usually better than single-organism estimates.  Moreover, the outputs remain separated by organism, which may be more convenient than simply merging the initial proteomes into a single sequence file (which produces a single output for all organisms).
+      es-mx: Nótese que, mientras la mayoría de los pasos se corren independientemente por organismo, todas las estadísticas estratificadas son estimadas combinando la distribución de valores \(p\) a través de los organismos (siempre estratificadas por familia de dominio), las cuales usualmente son mejores que estimaciones en un solo organismo.  Además, las salidas permaneceran separadas por organismo, lo cual podría serle más conveniente que simplemente juntar todas las proteinas en un solo archivo de secuencias (lo cual produciría un solo archivo de salida para todos los organismos).
+  - p:
+      -
+        en-us: This is the most inflexible of all these scripts, but it showcases the intended use of the
+        es-mx: Este es el guión más inflexible de todos estos, pero demuestra el uso del
+      - a:
+          href:
+            en-us: https://en.wikipedia.org/wiki/Application_programming_interface
+            es-mx: https://es.wikipedia.org/wiki/Interfaz_de_programaci%C3%B3n_de_aplicaciones
+          text: API
+      - ','
+      -
+        en-us: which is currently not documented, particularly the use of multiple input files.  I hope you modify it to suit your needs, for example to change the output patterns, or if you only want the domain predictions with a lFDR threshold, or if you want intermediate files to be deleted upon completion.
+        es-mx: el cual está sin documentar por el momento, particularmente el uso de múltiples archivos de entrada.  Espero que usted lo modifique para sus necesidades, por ejemplo para cambiar los patrones de las salidas, o si sólo quiere las predicciones de dominios con un contraste de lFDR, o si quiere que los archivos intermedios se borren cuando el proceso esté completo.
+  - h2:
+      en-us: Compatibility
+      es-mx: Compatibilidad
+  - p:
+      -
+# The runtimes reported were of this code as run on on a 64 bit machine with Intel® Core™ i7-3770 CPU @ 3.40GHz × 8 processors and 16G of RAM.
+        en-us: Code was tested with HMMER versions 3.0 and 3.1b1, against the Pfam 25 and 27, and Superfamily 1.75 HMM databases.
+        es-mx: Este código fue probado con HMMER versiones 3.0 y 3.1b1, contra las bases de datos HMM de Pfam 25 y 27, y Superfamily 1.75.
+  - h2:
+      en-us: Notes shared with other projects
+      es-mx: Notas compartidas con otros proyectos
+  - p:
+      en-us: Please read some additional notes by following the next link.
+      es-mx: Por favor lea notas adicionales siguiendo el vínculo a continuación.
+  - smartlinks: /pubcode
+  - h2:
+      en-us: Citation
+      es-mx: Cita
+  - p:
+      - Alejandro Ochoa, John Storey, Manuel Llinás, and Mona Singh.
+      - b: "Beyond the E-value: stratified statistics for protein domain prediction."
+      -
+        es-mx: Entregado.
+        en-us: Submitted.
+      - a:
+          text: arXiv
+          href: http://arxiv.org/abs/1409.6384
+      - 2014-09-23.
+  - h2:
+      en-us: Release notes
+      es-mx: Notas de la versión
+  - h3: 2014-10-24 - DomStratStats 1.03
+  - p:
+      -
+        en-us: (Yes, the same day as 1.02)
+        es-mx: (Sí, el mismo día que 1.02)
+  - p:
+      -
+        en-us: Corrected the code in 
+        es-mx: Corregí el código en
+      - code: Hmmer3ScanTab.pm
+      -
+        en-us: that inserts the DomStratStats columns to the HMMER3 output to handle cases of severe displacement when protein IDs are too long.  The output of the corrected code will remain displaced but the inserted columns are placed correctly within each row, without corrupting the original columns.  The old code assumed fixed positioning of columns except for very small displacements, which could cause errors in insertion.  In some cases, the old code aborted after failing to identify the correct insertion site.  Thanks again to 
+        es-mx: que inserta las columnas de DomStratStats a la salida de HMMER3 para manejar casos de desplazamiento severo cuando los identificadores de proteína son demasiado largos.  La salida del código corregido permanecerá desplazada pero las columnas insertadas van a aparecer correctas en cada fila, sin corromper las columnas originales.  El código viejo asumía posiciones fijas de columnas excepto por desplazamientos muy pequeños, lo cual podía cometer errores de inserción.  En algunos casos, el código viejo abortaba cuando no se identificaba la posición de inserción correcta.  Gracias otra vez a
+      - Sesh A. Sundararaman
+      -
+        en-us: for reporting this error.
+        es-mx: por reportar este error.
+  - h3: 2014-10-24 - DomStratStats 1.02
+  - p:
+      -
+        en-us: Corrected the script
+        es-mx: Corregí el guión
+      - code: 1noOvs.pl
+      -
+        en-us: to load
+        es-mx: para que cargue
+      - code: Domains.pm
+      -
+        en-us: instead of
+        es-mx: en lugar de
+      - code: Hits.pm
+      - ','
+      -
+        en-us: which was the old name of the same package.  This error prevented script compilation, so it couldn't run at all.  Thanks to 
+        es-mx: el cual era el nombre viejo de ese paquete.  Este error había prevenido la compliación del guión, así que no podía correr para nada.  Gracias a
+      - Sesh A. Sundararaman
+      -
+        en-us: for reporting this bug.
+        es-mx: por reportar este error.
+  - h3: 2014-09-18 - DomStratStats 1.01
+  - p:
+      -
+        en-us: Added script
+        es-mx: Añadí el guión
+      - code: 4allManyOrgs.pl
+  - p:
+      - code: 3tieredStratStats.pl
+      -
+        en-us: was renamed to
+        es-mx: se renombró a
+      - code: 3tieredStratQ.pl
+      - ','
+      -
+        en-us: since this is a more accurate description (this script does not use lFDRs, only \(q\)-values).
+        es-mx: ya que es una descripción más precisa (este guión no usa lFDRs, sólo valores \(q\)).
+  - p:
+      en-us: Reorganized internal packages, including creating and renaming packages and functions, for additional clarity to anybody interested in using the undocumented API.  I also added functions not used by DomStratStats, in order to ensure package compatibility with related projects (particularly dPUC 2)
+      es-mx: Reorganicé los paquetes internos, incluyendo crear y renombrar paquetes y funciones, para claridad adicional para cualquiera interesado en usar el API que está sin documentar.  También añadí funciones no usadas por DomStratStats, para asegurar la compatibilidad de paquetes con proyectos relacionados (particularmente dPUC 2).
+  - p:
+      en-us: Corrected documentation errors.  Also made this manual more concise.
+      es-mx: Corregí errores en la documentación.  También hice más conciso a este manual.
+  - p:
+      en-us: Outputs are unchanged, since no algorithms changed.
+      es-mx: Las salidas no cambian, dado que ningún algoritmo cambió.
+  - h3: 2014-06-23 - DomStratStats 1.00
+  - p:
+      en-us: This was the first public release of the code.
+      es-mx: Esta fue la primera versión pública del código.
+format: pseudohtml
+head: 
+  author: 
+    - Alex
+    - JohnStorey
+    - ManuelLlinás
+    - Mona
+  comments: 
+    en-us: Compute domain q-values and local FDRs, and tiered q-values (combining HMMER3 domain and sequence data).
+    es-mx: Computa valores q y FDRs locales para dominios, y valores q con gradas (combinando informacion de dominios y sequencias de HMMER3)
+  date: 2014-09-18 17:01:59 EDT
+  keywords: ''
+  langs: 
+    - es-mx
+    - en-us
+  personal: ''
+  subtitle:
+    en-us: stratified statistics for protein domains
+    es-mx: estadísticas estratificadas para dominios de proteínas
+  thumbnail: dss.thumb.png
+  title: DomStratStats
+  mathjax: 1
+history: 
+  - 
+    date: 2014-06-06 13:44:39 EDT
+    note: Inicié la página.
+  - 
+    date: 2014-06-23
+    note: Terminé la página (sólo en inglés) y se las mandé a Mona y Dario, pero sigue sin liga a mi página principal (es una página secreta).
+  - 
+    date: 2014-08-26 09:35:23 EDT
+    note: Terminé la traducción al español, publiqué la página.  Hubieron cambios menores de palabras y formato.
+  - 
+    date: 2014-09-18 17:01:59 EDT
+    note: Terminé todos los cambios para la versión 1.01 (son muchos).

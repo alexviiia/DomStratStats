@@ -1,0 +1,1 @@
+/home/viiia/scripts/0runHmmscan.pl
