@@ -18,6 +18,9 @@ Installation
 
 You'll need Perl 5 (without additional Perl packages), [HMMER3](http://hmmer.janelia.org/), and gzip installed.
 
+For the HMM database, you have two options.  For Pfam, you will need to download Pfam-A.hmm.gz and Pfam-A.hmm.dat.gz from [Pfam](ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/). For Superfamily, register and download hmmlib_1.75.gz from [Superfamily](http://supfam.org/SUPERFAMILY/downloads.html).  Either way, use HMMER3's hmmpress to prepare database for searching.
+
+
 Synopsis of scripts
 ===
 
