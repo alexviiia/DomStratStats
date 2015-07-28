@@ -5,7 +5,7 @@
 # You should have received a copy of the GNU General Public License along with DomStratStats.  If not, see <http://www.gnu.org/licenses/>.
 
 package QvalueLocal;
-our $VERSION = 1.01;
+our $VERSION = 1.02;
 
 use lib '.';
 use Qvalue;
@@ -63,7 +63,7 @@ sub p2q {
 	my $m2 = $p2m2->{$p};
 	# actual new computations!
 	my $q = $p ? $p*$m*$pi0/$n2 : 0; # q-value (really direct FDR, but cumulative should work appropriately now because of Grenander density estimator).  Only stupid special case is for p=0, which might not have been observed (always set q to zero regardless)
-	my $l = $m*$pi0/$m2; # local FDR using this data
+	my $l = $m2 ? $m*$pi0/$m2 : 0; # local FDR using this data (same thing, p=0 might not have been observed???)
 	$l = 1 if $l > 1; # ensure we don't output non-sensical lFDRs due to numerical oddities!
 	$p2dat{$p} = [$q, $l, $n, $n2, $m1, $m2]; # store data we want!  Q and L are most important, list first.  Rest is for potential analysis later on
 	$p2ql{$p} = $l; # save only local FDR separately!
