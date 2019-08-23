@@ -4,7 +4,7 @@
 # You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package ParseFasta;
-our $VERSION = 1.00;
+our $VERSION = 1.01;
 use Compress::Zlib; # core module!
 use lib '.';
 use FileGz;
@@ -13,6 +13,9 @@ use strict;
 # lightweight FASTA parser in a simple structure
 # some variants emphasize low memory footprint
 # there are no output writers because I've never needed them (FASTA is super easy to output if no max column limits are needed)
+
+# 2016-11-22 11:34:19 EST - v1.01
+# - added filtRepSeqs
 
 sub parseIntoHash {
     # reads regular fasta into a hash
@@ -68,7 +71,7 @@ sub parseIds {
 sub parseInit {
     # this returns filehandle and the first ID (need to give that to next sub)
     # if no IDs were found, will return a null ID
-    my $fi = shift;
+    my ($fi) = @_;
     my $fhi = FileGz::getInFh($fi);
     my $firstId;
     # this will read until the first ID is found (ignore everything before that)
@@ -132,6 +135,50 @@ sub countLetters {
 	close $fhi;
     }
     return $c;
+}
+
+sub filtRepSeqs {
+    # identifies repeated sequences in input FASTA and outputs a filtered FASTA 
+    # out of clashes, always keeps first ID in alphabetical order, for reproducibility
+    my ($fi, $fo, $comp, $verbose) = @_;
+
+    print "Scanning $fi...\n" if $verbose;
+    my %seq2ids; # get all IDs of each unique seq
+    # get proteome...
+    my ($fhi, $protNext) = parseInit($fi); # get data
+    # browse prots
+    while ($protNext) {
+	(my $prot, my $seq, $protNext) = parseNext($fhi, $protNext);
+	push @{$seq2ids{$seq}}, $prot;
+    }
+    close $fhi;
+
+    print "Determining removals...\n" if $verbose;
+    # at this point we don't care what the sequences were, just which ID's were mapped to the same ones
+    my %idsRm; # set of things to remove
+    foreach my $ids (values %seq2ids) {
+	if (@$ids > 1) {
+	    # found a set of redundant IDs
+	    @$ids = sort @$ids; # sort alphabetically to keep the first one only (could be faster cause we only care about the "min", but meh)
+	    shift @$ids; # toss first ID (it doesn't get removed)
+	    foreach my $id (@$ids) { # add remaining IDs to removal set
+		$idsRm{$id} = 1;
+	    }
+	}
+    }
+    
+    print "Scanning $fi again, creating $fo...\n" if $verbose;
+    # get proteome...
+    ($fhi, $protNext) = parseInit($fi); # get data
+    my $fho = FileGz::getOutFh($fo, $comp); # open output
+    # browse prots
+    while ($protNext) {
+	(my $prot, my $seq, $protNext) = parseNext($fhi, $protNext);
+	print $fho ">$prot\n$seq\n" unless exists $idsRm{$prot}; # transfer unless sequence was removed
+    }
+    # done, close all
+    close $fhi;
+    close $fho;
 }
 
 1;
