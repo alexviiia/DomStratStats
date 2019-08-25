@@ -12,7 +12,8 @@ use strict;
 # this script accepts as input a hmmer3 hmmscan output file (ideally with overlaps removed), and outputs a table file with filters corresponding to the tiered stratified q-value approach, and new columns too (qSeq and qDom|Seq)
 my ($fiSeq, $fi, $fo, $qCutSeq, $qCutDom) = @ARGV;
 
-die "# $0 $VERSION - Computes and adds q-values for sequences and domains.
+unless ($qCutSeq) {
+    print "# $0 $VERSION - Computes and adds q-values for sequences and domains.
 # DomStratStats ".(sprintf '%0.2f', $DomStratStats::VERSION).", viiia.org/domStratStats
 # Alejandro Ochoa, John Storey, Manuel Llinás, and Mona Singh.
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -42,8 +43,9 @@ Input files may be compressed with gzip, and may be specified with or without th
 extension.  Output file will be automatically compressed with gzip.
 
 See the online manual for more info.
-" unless $qCutSeq;
-
+";
+    exit 0;
+}
 
 # constants
 my $comp = 'gzip';

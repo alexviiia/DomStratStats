@@ -12,7 +12,8 @@ use strict;
 # this script accepts as input a hmmer3 hmmscan output file (ideally with overlaps removed), and outputs a table file with columns added that correspond to the q-values and local FDRs of these predictions, and additionally filters files given a threshold
 my ($fiSeq, $fi, $fo, $qCut, $lCut, $flCut) = @ARGV;
 
-die "# $0 $VERSION - Computes and adds domain q-values, local FDRs, and FDR|lFDR
+unless ($fo) {
+    print "# $0 $VERSION - Computes and adds domain q-values, local FDRs, and FDR|lFDR
 # DomStratStats ".(sprintf '%0.2f', $DomStratStats::VERSION).", viiia.org/domStratStats
 # Alejandro Ochoa, John Storey, Manuel Llinás, and Mona Singh.
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -40,8 +41,9 @@ Input files may be compressed with gzip, and may be specified with or without th
 extension.  Output file will be automatically compressed with gzip.
 
 See the online manual for more info.
-" unless $fo;
-
+";
+    exit 0;
+}
 
 # constants
 my $comp = 'gzip';

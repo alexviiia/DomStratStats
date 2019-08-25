@@ -14,7 +14,8 @@ use strict;
 # this script accepts as input a hmmer3 hmmscan output file, and outputs a table file with overlaps removed by p-value ranking
 my ($fi, $fo, $fiPfamADat) = @ARGV;
 
-die "# $0 $VERSION - Removes overlapping domains ranking by p-value
+unless ($fo) {
+    print "# $0 $VERSION - Removes overlapping domains ranking by p-value
 # DomStratStats ".(sprintf '%0.2f', $DomStratStats::VERSION).", viiia.org/domStratStats
 # Alejandro Ochoa, John Storey, Manuel Llinás, and Mona Singh.
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -32,7 +33,9 @@ Input files may be compressed with gzip, and may be specified with or without th
 extension.  Output file will be automatically compressed with gzip.
 
 See the online manual for more info.
-" unless $fo;
+";
+    exit 0;
+}
 
 # constants
 my $comp = 'gzip';

@@ -22,7 +22,8 @@ our ($fCut, $lCut) = qw(.5 40); # new permissive overlap params
 # the idea is to 
 my ($hmmscan, $pfamA, $fiPfamADat, @orgs) = @ARGV;
 
-die "# $0 $VERSION - Get final domain predictions from multiple sequence files
+unless (@orgs) {
+    print "# $0 $VERSION - Get final domain predictions from multiple sequence files
 # DomStratStats ".(sprintf '%0.2f', $DomStratStats::VERSION).", viiia.org/domStratStats
 # Alejandro Ochoa, John Storey, Manuel Llinás, and Mona Singh.
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -58,7 +59,9 @@ Note that, while most steps are run independently per organism, all stratified s
     output for all organisms).
 
 See the online manual for more info.
-" unless @orgs; # there should be at least one organism
+"; # there should be at least one organism
+    exit 0;
+}
 
 # for nesting net and GA thresholds
 # in this script, the ile is mandatory
