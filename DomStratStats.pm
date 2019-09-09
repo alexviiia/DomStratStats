@@ -1,11 +1,11 @@
-# Copyright (C) 2014 Alejandro Ochoa, Singh Research Group, Princeton University
+# Copyright (C) 2014-2019 Alejandro Ochoa, Singh Research Group, Princeton University
 # This file is part of DomStratStats.
 # DomStratStats is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 # DomStratStats is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 # You should have received a copy of the GNU General Public License along with DomStratStats.  If not, see <http://www.gnu.org/licenses/>.
 
 package DomStratStats;
-our $VERSION = 1.03;
+our $VERSION = 1.04;
 
 use lib '.';
 use Hmmer3ScanTab;

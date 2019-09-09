@@ -1,10 +1,10 @@
-# Copyright (C) 2014 Alejandro Ochoa, Singh Research Group, Princeton University
+# Copyright (C) 2014-2019 Alejandro Ochoa, Singh Research Group, Princeton University
 # This file is part of DomStratStats.
 # DomStratStats is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 # DomStratStats is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 # You should have received a copy of the GNU General Public License along with DomStratStats.  If not, see <http://www.gnu.org/licenses/>.
 
-my $VERSION = '1.02';
+my $VERSION = '1.03';
 use lib '.';
 use Domains;
 use DomStratStats;
@@ -15,8 +15,8 @@ use strict;
 my ($fi, $fo, $fiPfamADat) = @ARGV;
 
 unless ($fo) {
-    print "# $0 $VERSION - Removes overlapping domains ranking by p-value
-# DomStratStats ".(sprintf '%0.2f', $DomStratStats::VERSION).", viiia.org/domStratStats
+    print "# $0     $VERSION - Removes overlapping domains ranking by p-value
+# DomStratStats ".(sprintf '%0.2f', $DomStratStats::VERSION)." - https://github.com/alexviiia/DomStratStats
 # Alejandro Ochoa, John Storey, Manuel Llinás, and Mona Singh.
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
