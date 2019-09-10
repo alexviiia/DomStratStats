@@ -1,0 +1,79 @@
+Revision history for DomStratStats.
+
+1.00  2014-06-23
+
+ - First public release.
+
+1.01  2014-09-18
+
+ - Added script 4allManyOrgs.pl
+ - 3tieredStratStats.pl was renamed to 3tieredStratQ.pl, since this is a more accurate description (this script does not use lFDRs, only q-values).
+ - Reorganized internal packages, including creating and renaming packages and functions, for additional clarity to anybody interested in using the undocumented API.  I also added functions not used by DomStratStats, in order to ensure package compatibility with related projects (particularly dPUC 2)
+ - Corrected documentation errors.  Also made manual more concise.
+ - Outputs are unchanged, since no algorithms changed.
+
+1.02  2014-10-24
+
+ - Corrected the script 1noOvs.pl to load Domains.pm instead of Hits.pm, which was the old name of the same package.  This error prevented script compilation, so it couldn't run at all.  Thanks to Sesh A. Sundararaman for reporting this bug.
+
+1.03  2014-10-24
+
+ - (Yes, the same day as 1.02)
+ - Corrected the code in Hmmer3ScanTab.pm that inserts the DomStratStats columns to the HMMER3 output to handle cases of severe displacement when protein IDs are too long.  The output of the corrected code will remain displaced but the inserted columns are placed correctly within each row, without corrupting the original columns.  The old code assumed fixed positioning of columns except for very small displacements, which could cause errors in insertion.  In some cases, the old code aborted after failing to identify the correct insertion site.  Thanks again to Sesh A. Sundararaman for reporting this error.
+
+1.03  2015-07-03
+
+ - First commit and public version on GitHub.
+
+1.03  2015-07-21
+
+ - The code was tested with Pfam 28, which was released on May 2015. All the samples provided now correspond to that version.  In testing, I found a bug in the Pfam-A.hmm.dat file, whose "nesting" associations between domains families were blank, and this caused my old Pfam-A.hmm.dat parser to complain to STDERR a lot. I adjusted my code so this does not happen anymore. Unfortunately, for the current Pfam 28 Pfam-A.hmm.dat, there is no domain family nesting information available for use, thought I contacted the Pfam team and this bug may be fixed in the future (and my code will work correctly when that happens).
+ - (Yes, code version numbers were not updated).
+
+1.03  2015-07-28
+
+ - The local FDR code also has an "edge case" bugfix, in that data without observations gets an lFDR of zero instead of dying because of division by zero.
+ - Note original release notes said this was 1.04 but version in DomStratStats.pm was 1.03
+
+1.03  2015-12-23
+
+ - Retested for Pfam 29 and HMMER 3.1b2 (code unchanged).  Pfam 29 came out yesterday.  I reran the examples attached to this webpage using this newest Pfam as well as the newest HMMER.
+ - Note original release notes said this was 1.04 but version in DomStratStats.pm was 1.03
+
+1.03  2016-08-10
+
+ - Retested for Pfam 30 (code unchanged).  I reran the examples attached to this webpage using this newest Pfam.
+ - Note original release notes said this was 1.04 but version in DomStratStats.pm was 1.03
+
+1.03  2017-03-13
+
+ - Retested for Pfam 31 (code unchanged).  I reran the examples attached to this webpage using this newest Pfam.
+ - Note original release notes said this was 1.04 but version in DomStratStats.pm was 1.03
+
+1.03  2019-03-01
+
+ - Retested for Pfam 32 (code unchanged).  I reran the examples attached to this webpage using this newest Pfam.
+ - Note original release notes said this was 1.04 but version in DomStratStats.pm was 1.03
+
+1.03  2019-05-06
+
+ - Added sample files to repo.
+ - (Yes, code version numbers were not updated).
+
+1.03  2019-08-23
+
+ - Added ParseFasta::filtRepSeqs (unused by DomStratStats, but handy)
+ - Removed suffix option for coordinate keys in Domains.pm, which was always unused in public versions.
+ - Added "single thread" option for timing purposes.
+ - Added option to specify hmmscan main output (for users wanting alignments)
+ - (Yes, code version numbers were not updated).
+
+1.03  2019-08-24
+
+ - Help/usage message of all scripts now return exit code 0 (success)
+ - (Yes, code version numbers were not updated).
+
+1.04  2019-09-09
+
+ - Changed official website from viiia.org to github.com (hardcoded in help messages)
+ - Added this Perl-formatted changes log to GitHub repository (previously only on viiia.org), extended to record some post-GitHub activity that was previously missing.
