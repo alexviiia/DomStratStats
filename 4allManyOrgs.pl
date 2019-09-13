@@ -4,7 +4,9 @@
 # DomStratStats is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 # You should have received a copy of the GNU General Public License along with DomStratStats.  If not, see <http://www.gnu.org/licenses/>.
 
-my $VERSION = '1.01';
+# core Perl modules
+use FindBin ();
+# local modules
 use lib '.';
 use FileGz;
 use DomStratStats;
@@ -22,13 +24,13 @@ our ($fCut, $lCut) = qw(.5 40); # new permissive overlap params
 # the idea is to 
 my ($hmmscan, $pfamA, $fiPfamADat, @orgs) = @ARGV;
 
+# there should be at least one organism
 unless (@orgs) {
-    print "# $0 $VERSION - Get final domain predictions from multiple sequence files
-# DomStratStats   ".(sprintf '%0.2f', $DomStratStats::VERSION)." - https://github.com/alexviiia/DomStratStats
-# Alejandro Ochoa, John Storey, Manuel Llinás, and Mona Singh.
+    print "# $FindBin::Script: Get final domain predictions from multiple sequence files
+# " . DomStratStats::version_string() . "
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Usage: perl -w $0 <hmmscan> <Pfam-A.hmm> <Pfam-A.hmm.dat> <orgs>...
+Usage: perl -w $FindBin::Script <hmmscan> <Pfam-A.hmm> <Pfam-A.hmm.dat> <orgs>...
 
 The required inputs are
     <hmmscan>        the path to the HMMER3 hmmscan executable.
@@ -57,9 +59,7 @@ Note that, while most steps are run independently per organism, all stratified s
     the outputs remain separated by organism, which may be more convenient than simply
     merging the initial proteomes into a single sequence file (which produces a single
     output for all organisms).
-
-See the online manual for more info.
-"; # there should be at least one organism
+";
     exit 0;
 }
 

@@ -5,7 +5,13 @@
 # You should have received a copy of the GNU General Public License along with DomStratStats.  If not, see <http://www.gnu.org/licenses/>.
 
 package DomStratStats;
-our $VERSION = 1.04;
+our $VERSION = '1.05';
+# for help messages
+our $website = 'https://github.com/alexviiia/DomStratStats';
+
+sub version_string {
+    return "DomStratStats $VERSION - $website";
+}
 
 use lib '.';
 use Hmmer3ScanTab;

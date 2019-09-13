@@ -4,7 +4,9 @@
 # DomStratStats is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 # You should have received a copy of the GNU General Public License along with DomStratStats.  If not, see <http://www.gnu.org/licenses/>.
 
-my $VERSION = '1.01';
+# core Perl modules
+use FindBin ();
+# local modules
 use lib '.';
 use DomStratStats;
 use strict;
@@ -13,12 +15,11 @@ use strict;
 my ($fiSeq, $fi, $fo, $qCut, $lCut, $flCut) = @ARGV;
 
 unless ($fo) {
-    print "# $0 $VERSION - Computes and adds domain q-values, local FDRs, and FDR|lFDR
-# DomStratStats     ".(sprintf '%0.2f', $DomStratStats::VERSION)." - https://github.com/alexviiia/DomStratStats
-# Alejandro Ochoa, John Storey, Manuel Llinás, and Mona Singh.
+    print "# $FindBin::Script: Compute and add domain q-values, local FDRs, and FDR|lFDR
+# " . DomStratStats::version_string() . "
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Usage: perl -w $0 <FASTA input> <input table> <output table> \\
+Usage: perl -w $FindBin::Script <FASTA input> <input table> <output table> \\
          [<q-value> <local FDR> <FDR|lFDR>]
 
 The required inputs are
@@ -28,7 +29,7 @@ The required inputs are
 
 The following optional thresholds may be set. Either or all can be set simultaneously, 
     which is supported although it is unusual and hard to interpret, so avoid using this 
-    feature. Use 1 for any threshold you don't wish to set but must list (for example, to 
+    feature.  Use 1 for any threshold you don't wish to set but must list (for example, to 
     only set an FDR|lFDR threshold, set both the q-value and local FDR thresholds to 1).
     <q-value>      stratified domain q-value threshold. Sets FDR per family.
     <local FDR>    stratified domain local FDR threshold. Sets minimum posterior error
@@ -40,7 +41,13 @@ The following optional thresholds may be set. Either or all can be set simultane
 Input files may be compressed with gzip, and may be specified with or without the .gz 
 extension.  Output file will be automatically compressed with gzip.
 
-See the online manual for more info.
+This is the most basic approach to FDR control.  If you just want domain predictions at an 
+FDR equal to Pfam's, set q <= 4e-4 or some other q-value threshold.  Regard lFDRs and 
+FDR|lFDR as experimental features worthy of further research, at least for the moment.
+
+Note that the FDR|lFDR is monotonic with the stratified domain lFDR, but not with stratified 
+domain q-values.  When lFDRs are accurate (this is a big if!), they provide the optimal way 
+of controlling the combined FDR through FDR|lFDR.
 ";
     exit 0;
 }

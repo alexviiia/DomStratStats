@@ -77,3 +77,13 @@ Revision history for DomStratStats.
 
  - Changed official website from viiia.org to github.com (hardcoded in help messages)
  - Added this Perl-formatted changes log to GitHub repository (previously only on viiia.org), extended to record some post-GitHub activity that was previously missing.
+
+1.05  2019-09-11
+
+ - README.md now contains the complete manual, which used to be on viiia.org (edited for brevity).
+   viiia.org version will be removed imminently.
+ - All scripts have more detailed help messages, to avoid having to go online for more info.
+   This info is replicated on README.
+ - Got rid of separate version numbers for every script.
+ - Got rid of author list printed on help message.
+ - Refactored and improved help message code.  Added FindBin dependency (Perl core module).

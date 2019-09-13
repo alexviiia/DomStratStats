@@ -4,7 +4,9 @@
 # DomStratStats is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 # You should have received a copy of the GNU General Public License along with DomStratStats.  If not, see <http://www.gnu.org/licenses/>.
 
-my $VERSION = '1.03';
+# core Perl modules
+use FindBin ();
+# local modules
 use lib '.';
 use Domains;
 use DomStratStats;
@@ -15,12 +17,11 @@ use strict;
 my ($fi, $fo, $fiPfamADat) = @ARGV;
 
 unless ($fo) {
-    print "# $0     $VERSION - Removes overlapping domains ranking by p-value
-# DomStratStats ".(sprintf '%0.2f', $DomStratStats::VERSION)." - https://github.com/alexviiia/DomStratStats
-# Alejandro Ochoa, John Storey, Manuel Llinás, and Mona Singh.
+    print "# $FindBin::Script: Remove overlapping domains ranking by p-value
+# " . DomStratStats::version_string() . "
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Usage: perl -w $0 <input table> <output table> [<Pfam-A.hmm.dat>]
+Usage: perl -w $FindBin::Script <input table> <output table> [<Pfam-A.hmm.dat>]
 
 The required inputs are
     <input table>    the output from hmmscan (previous script).
@@ -32,7 +33,10 @@ This is an additional optional input, which is specific to Pfam.
 Input files may be compressed with gzip, and may be specified with or without the .gz 
 extension.  Output file will be automatically compressed with gzip.
 
-See the online manual for more info.
+The easiest way to compute correct FDRs and lFDRs is to first remove overlaps between 
+domains, raking by p-value, which is what this script does.  A permissive overlap 
+definition is used: only overlaps that exceed 40 amino acids or 50% of the length of the 
+smaller domain are removed.  These parameters are hardcoded in the script.
 ";
     exit 0;
 }

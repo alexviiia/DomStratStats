@@ -4,7 +4,9 @@
 # DomStratStats is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 # You should have received a copy of the GNU General Public License along with DomStratStats.  If not, see <http://www.gnu.org/licenses/>.
 
-my $VERSION = '1.01';
+# core Perl modules
+use FindBin ();
+# local modules
 use lib '.';
 use DomStratStats;
 use strict;
@@ -13,12 +15,11 @@ use strict;
 my ($fiSeq, $fi, $fo, $qCutSeq, $qCutDom) = @ARGV;
 
 unless ($qCutSeq) {
-    print "# $0 $VERSION - Computes and adds q-values for sequences and domains.
-# DomStratStats    ".(sprintf '%0.2f', $DomStratStats::VERSION)." - https://github.com/alexviiia/DomStratStats
-# Alejandro Ochoa, John Storey, Manuel Llinás, and Mona Singh.
+    print "# $FindBin::Script: Compute and add q-values for sequences and domains.
+# " . DomStratStats::version_string() . "
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Usage: perl -w $0 <FASTA input> <input table> <output table> \\ 
+Usage: perl -w $FindBin::Script <FASTA input> <input table> <output table> \\ 
          <seq q-value> [<dom q-value>]
 
 The required inputs are
@@ -42,7 +43,12 @@ q-value threshold.
 Input files may be compressed with gzip, and may be specified with or without the .gz 
 extension.  Output file will be automatically compressed with gzip.
 
-See the online manual for more info.
+This \"tiered\" approach relies on setting a threshold on stratified sequence q-values, 
+then computing q-values on the remaining domains (a q-value which gives an FDR conditional 
+on the first sequence FDR filter) and setting a threshold too.  This way the information of 
+repeating domains can be used, like Pfam does except here thresholds are picked 
+automatically rather than through expert curation.  However, this approach does not control 
+the FDR accurately, so q-value thresholds must be chosen using benchmarks.
 ";
     exit 0;
 }
