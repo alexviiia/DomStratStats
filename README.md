@@ -120,7 +120,7 @@ Sample input:
 
 Sample outputs:
 
-- [`sample/PLAF7.p.txt`](sample/PLAF7.p.txt): HMMER3/Pfam32 domain predictions using weak filters (produced by `0runHmmscan.pl` as below).
+- [`sample/PLAF7.p.txt`](sample/PLAF7.p.txt): HMMER3/Pfam33.1 domain predictions using weak filters (produced by `0runHmmscan.pl` as below).
 - [`sample/PLAF7.po.txt`](sample/PLAF7.po.txt): Domain predictions with overlaps removed, using the previous sample as input (produced by `1noOvs.pl` as below).
 - [`sample/PLAF7.pod.txt`](sample/PLAF7.pod.txt): Domain predictions with q-values, local FDRs and FDR|lFDR columsn added, using the previous sample as input (produced by `2domStratStats.pl` as in the first command below).
 
@@ -468,8 +468,8 @@ See [LICENSE](LICENSE).
 This code has been tested on
 
 - Perl 5.18, 5.20, 5.22, 5.28
-- HMMER 3.0, 3.1b1, 3.1b2, 3.2.1
-- Pfam 25, 27-32
+- HMMER 3.0, 3.1b1, 3.1b2, 3.2.1, 3.3
+- Pfam 25, 27-33.1
 - Superfamily 1.75
 
 # Citation
